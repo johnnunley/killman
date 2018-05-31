@@ -20,6 +20,7 @@ along with killman.  If not, see <http://www.gnu.org/licenses/>.
 #include "killman_config.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 // returns a string containing the current version of killman
@@ -53,7 +54,7 @@ char *getVersion() {
 // entry point
 int main(int argc, char **argv) {
   char *version = getVersion();
-  puts(version);
+  printf("Initializing killman v%s...\n",version);
   // TODO: launch the window, etc
   
   // variable freeing section
