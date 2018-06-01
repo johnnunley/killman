@@ -29,7 +29,7 @@ endif (MINGW OR MSYS)
 
 option(COMPILE_WITH_STATIC "Compile with the -static option" ${CWS_DEFAULT})
 
-set(COMPILE_FLAGS "-Iinclude -pthread -Wall `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`")
+set(COMPILE_FLAGS "-Iinclude -pthread -Wall $(pkg-config --cflags gtk+-3.0) $(pkg-config --libs gtk+-3.0)")
 set(LINK_FLAGS " ")
 
 if (COMPILE_WITH_STATIC)
