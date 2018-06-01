@@ -26,7 +26,7 @@ endif (MINGW OR MSYS)
 
 option(COMPILE_WITH_STATIC "Compile with the -static option" ${CWS_DEFAULT})
 
-set(COMPILE_FLAGS "-Iinclude -pthread -Wsizeof-array-argument")
+set(COMPILE_FLAGS "-Iinclude -pthread -Wall `gtk-config --cflags` `gtk-config --libs`")
 set(LINK_FLAGS " ")
 
 if (COMPILE_WITH_STATIC)

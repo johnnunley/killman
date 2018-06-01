@@ -16,3 +16,11 @@ You should have received a copy of the GNU General Public License
 along with killman.  If not, see <http://www.gnu.org/licenses/>.
 
 */
+
+// this file is used to interface with the gtk library
+
+// creates the window, adds widgets, and shows it
+void initializeWindow(int *argc, char ***argv);
+
+// starts gtk_main()
+void initializeLoop();

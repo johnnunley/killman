@@ -17,8 +17,9 @@ along with killman.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
-#include "killman_config.h"
 #include "error.h"
+#include "killman_config.h"
+#include "window.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -53,12 +54,18 @@ char *getVersion() {
 
 // entry point
 int main(int argc, char **argv) {
+  // print the current version
   char *version = getVersion();
   printf("Initializing killman v%s...\n",version);
-  // TODO: launch the window, etc
   
-  // variable freeing section
+  // free version; it is no longer needed
   free(version);
+
+  // initialize the window
+  initializeWindow(&argc,&argv);
+
+  // start the loop
+  initializeLoop();
 
   // return with no errors
   return 0;

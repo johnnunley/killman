@@ -18,13 +18,27 @@ along with killman.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "error.h"
+#include "window.h"
 
-#include <errno.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <gtk/gtk.h>
 
-void error(char *msg) {
-  fprintf(stderr, "%s: %s\n", msg, strerror(errno));
-  exit(1);
+// variables
+GtkWidget *window;
+
+// creates the window, adds widgets, and shows it
+void initializeWindow(int *argc, char ***argv) {
+  // call gtk_init to initialize gtk
+  gtk_init(argc,argv);
+
+  // create the window
+  window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  if (window == NULL) error("Unable to create window");
+
+  // show the window
+  gtk_widget_show(window);
+}
+
+// starts gtk_main()
+void initializeLoop() {
+  gtk_main();
 }
