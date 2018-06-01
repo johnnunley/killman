@@ -18,6 +18,7 @@ along with killman.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include "killman_config.h"
+#include "error.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -36,8 +37,7 @@ char *getVersion() {
   // malloc the memory needed for the version string; check for errors too
   char *fullVersion = malloc(strlen(ver) + strlen(firstPeriod) + strlen(rev) + strlen(secondPeriod) + strlen(mrev) + 1); // + 1 for the null terminator
   if (fullVersion == NULL) {
-    // TODO: once we have an error handling system, handle the error
-    exit(-1);
+    error("Failed to concatenate string");
   }
 
   // copy ver to the new string, then concatenate it with the rev, mrev, and the periods
