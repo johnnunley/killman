@@ -18,6 +18,9 @@ cmake_minimum_required(VERSION 2.8.9)
 project(killman)
 set(CMAKE_BUILD_TYPE Release)
 
+# execute_process(COMMAND "pkg-config" "--version" RESULT_VARIABLE PKG_CONFIG_RESULT)
+# if (NOT "${PKG_CONFIG_RESULT}" MATCHES "0")
+
 set(CWS_DEFAULT OFF)
 
 if (MINGW OR MSYS)
@@ -26,7 +29,7 @@ endif (MINGW OR MSYS)
 
 option(COMPILE_WITH_STATIC "Compile with the -static option" ${CWS_DEFAULT})
 
-set(COMPILE_FLAGS "-Iinclude -pthread -Wall `gtk-config --cflags` `gtk-config --libs`")
+set(COMPILE_FLAGS "-Iinclude -pthread -Wall `pkg-config --cflags gtk+-3.0` `pkg-config --libs gtk+-3.0`")
 set(LINK_FLAGS " ")
 
 if (COMPILE_WITH_STATIC)
