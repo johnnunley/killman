@@ -21,6 +21,11 @@ set(CMAKE_BUILD_TYPE Release)
 # execute_process(COMMAND "pkg-config" "--version" RESULT_VARIABLE PKG_CONFIG_RESULT)
 # if (NOT "${PKG_CONFIG_RESULT}" MATCHES "0")
 
+# import GTK+
+include(FindPkgConfig)
+pkg_check_modules(GTK REQUIRED IMPORTED_TARGET "gtk+-3.0")
+# include_directories(${GTK_INCLUDE_DIRS})
+
 set(CWS_DEFAULT OFF)
 
 if (MINGW OR MSYS)
@@ -29,7 +34,7 @@ endif (MINGW OR MSYS)
 
 option(COMPILE_WITH_STATIC "Compile with the -static option" ${CWS_DEFAULT})
 
-set(COMPILE_FLAGS "-Iinclude -pthread -Wall $(pkg-config --cflags gtk+-3.0) $(pkg-config --libs gtk+-3.0)")
+set(COMPILE_FLAGS "-Iinclude -pthread -Wall")
 set(LINK_FLAGS " ")
 
 if (COMPILE_WITH_STATIC)
@@ -61,11 +66,12 @@ configure_file (
   )
 
 # compile sources
-add_executable(killman ${SOURCES})
-set_property(TARGET killman PROPERTY CXX_STANDARD 11)
-set_property(TARGET killman PROPERTY CXX_STANDARD_REQUIRED ON)
-set_property(TARGET killman PROPERTY C_STANDARD 11)
-set_property(TARGET killman PROPERTY C_STANDARD_REQUIRED ON)
+add_executable(${CMAKE_PROJECT_NAME} ${SOURCES})
+target_link_libraries(${CMAKE_PROJECT_NAME} PkgConfig::GTK)
+set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY CXX_STANDARD 11)
+set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY C_STANDARD 11)
+set_property(TARGET ${CMAKE_PROJECT_NAME} PROPERTY C_STANDARD_REQUIRED ON)
 
 # add installation rules
 install(TARGETS killman DESTINATION bin)
