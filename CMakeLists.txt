@@ -50,7 +50,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LINK_FLAGS}")
 # set version information
 set(km_VERSION "ALPHA")
 set(km_REVISION "1")
-set(km_MINOR_REVISION "0")
+set(km_MINOR_REVISION "1")
 
 # get sources
 file(GLOB SOURCES "src/*")

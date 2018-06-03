@@ -19,8 +19,12 @@ along with killman.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifndef km_VERSION
 
+// define version stuff
 #define km_VERSION "@km_VERSION@"
 #define km_REVISION "@km_REVISION@"
 #define km_MINOR_REVISION "@km_MINOR_REVISION@"
+
+// define some other types
+typedef unsigned int uint;
 
 #endif

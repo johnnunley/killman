@@ -17,6 +17,10 @@ along with killman.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
+#ifndef ERROR_H
+#define ERROR_H
+
 // run this function on an error
 void error(char *msg);
 
+#endif
